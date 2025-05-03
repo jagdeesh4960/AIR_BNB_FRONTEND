@@ -14,6 +14,7 @@ const Signup = ({ display, setDisplay }) => {
   const onSubmit = async (data) => {
     // console.log(data);
     const res = await signUpService(data);
+    
     if (res) {
       setDisplay(false);
     }
@@ -61,11 +62,11 @@ const Signup = ({ display, setDisplay }) => {
                     required: "Username is required",
                   })}
                 />
-                {errors.email && (
+                {errors.userName && (
                   <p className="absolute bottom-0 left-[3%] w-full text-[red] text-xs ">
                     {" "}
                     <i className="ri-information-fill text-[red]"></i>{" "}
-                    {errors.email.message}
+                    {errors.userName.message}
                   </p>
                 )}
               </div>
@@ -80,11 +81,11 @@ const Signup = ({ display, setDisplay }) => {
                   <p className="absolute bottom-0 left-[3%] w-full text-[red] text-xs ">
                     {" "}
                     <i className="ri-information-fill text-[red]"></i>{" "}
-                    {errors.email.message}
+                    {errors.mobile.message}
                   </p>
                 )}
               </div>
-              <div className="p-4 text-md relative w-full flex justify-center items-center gap-3 ">
+              <div className="p-4 text-md relative w-full flex justify-center items-center gap-3 border-b border-zinc-500">
                 <label>Password:</label>
                 <input
                   className="w-full h-full focus:outline-none text-xl "
@@ -101,6 +102,26 @@ const Signup = ({ display, setDisplay }) => {
                   </p>
                 )}
               </div>
+
+              <div className="w-full p-4 text-md relative  flex justify-center items-center gap-3 ">
+                <label>Address:</label>
+                <input
+                  className="w-full h-full focus:outline-none text-xl "
+                  type="text"
+                  {...register("address", {
+                    required: "Address is required",
+                  })}
+                />
+                {errors.address && (
+                  <p className="absolute bottom-0 left-[3%] w-full text-[red] text-xs ">
+                    {" "}
+                    <i className="ri-information-fill text-[red]"></i>{" "}
+                    {errors.address.message}
+                  </p>
+                )}
+              </div>
+
+
             </div>
             <button
               className="w-full text-center bg-[#b17f44] mt-4 text-white rounded-md py-3"
